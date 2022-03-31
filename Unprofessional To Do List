@@ -1,0 +1,15 @@
+To Dos:
+ - Data Collection of Stats for:
+    - Weapons
+    - Armor
+    - Ashes of War
+    - Incantations/Sorceries
+    - Talismans
+    - Enemies: Mobs, Story Bosses, World Bosses
+ - Calculator for these variables
+ - Data Structure Set up for variables/inputs
+ - GUI
+ 
+Possible Additions?
+ - Crafted item usage
+ - Web Scraper for updates
