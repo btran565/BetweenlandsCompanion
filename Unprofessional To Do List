@@ -8,8 +8,10 @@ To Dos:
     - Enemies: Mobs, Story Bosses, World Bosses
  - Calculator for these variables
  - Data Structure Set up for variables/inputs
- - GUI
+ 
  
 Possible Additions?
  - Crafted item usage - unsure how to integrate into calculations
  - Web Scraper for updates
+ - GUI
+ - Website w/ reactJS
