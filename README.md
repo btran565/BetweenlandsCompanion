@@ -7,5 +7,5 @@ Uses attributes and player loadout provided by the user to determine how effecti
 ## Contributors
 
 - Brandon Tran <branjtran@gmail.com>
-- Connor Davis <>
+- Connor Davis <c.a.davi2874@gmail.com>
 
