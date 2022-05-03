@@ -1,4 +1,4 @@
-# BetweenlandsCompanion
+# LandsBetweenCompanion
 
 Application providing Elden Ring players information about damage output and combat effectiveness against the game's enemies, including bosses and enemies found in the open world. 
 
