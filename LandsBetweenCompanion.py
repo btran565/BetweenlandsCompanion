@@ -22,12 +22,14 @@ def attributes():
     inputs.append(input())
 
     return inputs
+def equipment():
+    #api for all equipment?????
+    
+    return
 
 def main():     
     #todo: input type error checking
     #user inputs character stats
-
-    
     while True:
         attList = attributes()
 
