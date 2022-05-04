@@ -1,4 +1,5 @@
 # LandsBetweenCompanion
+# ********README IN PROGRESS********
 
 Application providing Elden Ring players information about damage output and combat effectiveness against the game's enemies, including bosses and enemies found in the open world. 
 
@@ -8,6 +9,10 @@ Uses attributes and player loadout provided by the user to determine how effecti
 
 - Brandon Tran <branjtran@gmail.com>
 - Connor Davis <c.a.davi2874@gmail.com>
+
+## Concepts Used
+- REST API
+- 
 
 ## Implementation
 
