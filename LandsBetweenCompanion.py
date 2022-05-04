@@ -1,3 +1,4 @@
+import requests
 
 def attributes():
 
@@ -24,7 +25,8 @@ def attributes():
     return inputs
 def equipment():
     #api for all equipment?????
-    
+    response = requests.get("https://eldenring.fanapis.com/api/weapons/:weapon_id")
+    print (response.json())
     return
 
 def main():     
@@ -48,6 +50,9 @@ def main():
         answer = input()
         if answer.lower() == "yes":
             break
-        
+    while True:
+        equipList = equipment()
+
+
 
 main()
