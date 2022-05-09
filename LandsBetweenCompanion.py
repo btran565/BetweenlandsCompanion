@@ -27,14 +27,6 @@ def getAttributes():
     attDict[attList[8]] = input()
     return attDict
 
-def getAPI(category):    #returns dict of specified category in API   ##need to add error checking for 'category'
-    json_data = {}
-    for i in range(4):      #reads multiple pages of API to fill local json library
-        response = requests.get("https://eldenring.fanapis.com/api/" + category + "s" + "?limit=100&page=" + "0")
-        json_data.update(json.loads(response.text))
-    items = makeDict(json_data, category)
-    return items
-
 def getEquipment():     ##needs error checking for right/left ints
     print("Enter the number of items equipped in the right hand: ")
     rightNum = int(input())
@@ -60,6 +52,13 @@ def getEquipment():     ##needs error checking for right/left ints
 
     return
 
+def getAPI(category):    #returns dict of specified category in API   ##need to add error checking for 'category'
+    json_data = {}
+    for i in range(4):      #reads multiple pages of API to fill local json library
+        response = requests.get("https://eldenring.fanapis.com/api/" + category + "s" + "?limit=100&page=" + "0")
+        json_data.update(json.loads(response.text))
+    items = makeDict(json_data, category)
+    return items
 
 def makeDict(data, category):  #takes json data and category and makes dict ## add more conditionals to make dicts of other categories
     dict = {}
