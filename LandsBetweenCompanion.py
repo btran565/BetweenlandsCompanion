@@ -34,6 +34,10 @@ def getEquipment():
     print("Enter the number of weapons equipped in the left hand: ")
     left = input()
 
+    rightHand = []
+    if right>0:
+        for i in range(right):
+            print("")
     ##code for equipping weapons in each hand
 
     return
