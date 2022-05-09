@@ -31,7 +31,7 @@ def getAPI(category):
     for i in range(4):
         response = requests.get("https://eldenring.fanapis.com/api/" + category + "?limit=100&page=" + i)
         json_data += json.loads(response.text)
-    items = makeDict(json_data)
+    items = makeDict(json_data, category)
     return items
 
 def getEquipment():
@@ -43,20 +43,22 @@ def getEquipment():
     rightHand = []
     if right > 0:
         for i in range(right):
-            print("Right hand equipment #" + str(i) + ": \n")
-            print("What kind of equipment is this?")
+            print("Right hand equipment #" + str(i+1) + ":")
+            print("What kind of equipment is this? (Select one of the following)\n")
+            print("Weapon/Shield")
     ##code for equipping weapons in each hand
 
     return
 
 
-def makeDict(data):  # add new argument to change items in dictionary?
+def makeDict(data, category):  # add new argument to change items in dictionary?
     dict = {}
-    for i in range(len(data['data'])):
-        weapon = item.Weapon(data['data'][i]['id'], data['data'][i]['name'], data['data'][i]['image'],
-                             data['data'][i]['description'], data['data'][i]['attack'], data['data'][i]['defence'],
-                             data['data'][i]['scalesWith'])
-        dict[data['data'][i]['name']] = weapon
+    if category == "weapon":
+        for i in range(len(data['data'])):
+            weapon = item.Weapon(data['data'][i]['id'], data['data'][i]['name'], data['data'][i]['image'],
+                                 data['data'][i]['description'], data['data'][i]['category'], data['data'][i]['weight'], data['data'][i]['attack'], data['data'][i]['defence'], data['data'][i]['requiredAttributes'],
+                                 data['data'][i]['scalesWith'])
+            dict[data['data'][i]['name']] = weapon
     return dict  # returns dictionary of item names and item objects
 
 
