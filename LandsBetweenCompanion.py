@@ -3,7 +3,6 @@ import json
 import item
 
 def getAttributes():
-
     inputs = []
     print("Welcome to the Lands Between Companion! Enter your Elden Ring character's level:")
     inputs.append(input())
@@ -25,17 +24,27 @@ def getAttributes():
     inputs.append(input())
 
     return inputs
+
 def getEquipment():
     response = requests.get("https://eldenring.fanapis.com/api/weapons?limit=400")
     json_data = json.loads(response.text)
-    makeDict(json_data)
+    items = makeDict(json_data)
+    left, right = 0
+    print("Enter the number of weapons equipped in the right hand: ")
+    right.append(input())
+    print("Enter the number of weapons equipped in the left hand: ")
+    left.append(input())
+
+
     return
-def makeDict(data):
+
+def makeDict(data):     #add new argument to change items in dictionary?
     dict = {}
     for i in range(len(data['data'])):
         weapon = item.weapon(data['data'][i]['id'], data['data'][i]['name'], data['data'][i]['image'], data['data'][i]['description'], data['data'][i]['attack'], data['data'][i]['defence'], data['data'][i]['scalesWith'])
         dict[data['data'][i]['name']] = weapon
-    return dict
+    return dict     #returns dictionary of item names and item objects
+
 def main():     
     #todo: input type error checking
     #user inputs character stats
@@ -57,7 +66,6 @@ def main():
         answer = input()
         if answer.lower() == "yes":
             break
-    #while True:
     equipList = getEquipment()
 
 
