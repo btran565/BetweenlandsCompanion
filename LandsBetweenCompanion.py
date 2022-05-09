@@ -34,7 +34,7 @@ def getAPI(category):       ##need to add error checking for 'category'
     items = makeDict(json_data, category)
     return items
 
-def getEquipment():
+def getEquipment():     ##needs error checking for right/left ints
     print("Enter the number of items equipped in the right hand: ")
     right = int(input())
     print("Enter the number of items equipped in the left hand: ")
@@ -53,12 +53,18 @@ def getEquipment():
 
 def makeDict(data, category):  # add more conditionals to make dicts of other categories
     dict = {}
-    if (category == "weapon") or (category == "shield") :
+    if (category == "weapon"):
         for i in range(len(data['data'])):
             weapon = item.Weapon(data['data'][i]['id'], data['data'][i]['name'], data['data'][i]['image'],
                                  data['data'][i]['description'], data['data'][i]['category'], data['data'][i]['weight'], data['data'][i]['attack'], data['data'][i]['defence'], data['data'][i]['requiredAttributes'],
                                  data['data'][i]['scalesWith'])
             dict[data['data'][i]['name']] = weapon
+    if (category == "shield"):
+        for i in range(len(data['data'])):
+            shield = item.Shield(data['data'][i]['id'], data['data'][i]['name'], data['data'][i]['image'],
+                                 data['data'][i]['description'], data['data'][i]['category'], data['data'][i]['weight'], data['data'][i]['attack'], data['data'][i]['defence'], data['data'][i]['requiredAttributes'],
+                                 data['data'][i]['scalesWith'])
+            dict[data['data'][i]['name']] = shield
     return dict  # returns dictionary of item names and item objects
 
 
