@@ -1,7 +1,7 @@
 import requests
 import json
 
-def attributes():
+def getAttributes():
 
     inputs = []
     print("Welcome to the Lands Between Companion! Enter your Elden Ring character's level:")
@@ -24,18 +24,18 @@ def attributes():
     inputs.append(input())
 
     return inputs
-def equipment():
+def getEquipment():
     #api for all equipment?????
-    response = requests.get("https://eldenring.fanapis.com/api/weapons")
+    response = requests.get("https://eldenring.fanapis.com/api/weapons?limit=400")
     json_data = json.loads(response.text)
-    print(json_data)
+    print(json_data['data'])
     return
 
 def main():     
     #todo: input type error checking
     #user inputs character stats
     while True:
-        attList = attributes()
+        attList = getAttributes()
 
         print("Player's attributes:\n")
         print("Level: " +attList[0])
@@ -53,7 +53,7 @@ def main():
         if answer.lower() == "yes":
             break
     #while True:
-    equipList = equipment()
+    equipList = getEquipment()
 
 
 
