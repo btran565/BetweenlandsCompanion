@@ -1,5 +1,6 @@
 import requests
 import json
+import item
 
 def getAttributes():
 
@@ -28,9 +29,14 @@ def getEquipment():
     #api for all equipment?????
     response = requests.get("https://eldenring.fanapis.com/api/weapons?limit=400")
     json_data = json.loads(response.text)
-    print(json_data['data'])
+    print(makeDict(json_data))
     return
-
+def makeDict(data):
+    dict = {}
+    for i in range(len(data['data'])):
+        weapon = item.weapon(data['data'][i]['id'], data['data'][i]['name'], data['data'][i]['image'], data['data'][i]['description'], data['data'][i]['attack'], data['data'][i]['defence'], data['data'][i]['scalesWith'])
+        dict[data['data'][i]['name']] = weapon
+    return dict
 def main():     
     #todo: input type error checking
     #user inputs character stats
