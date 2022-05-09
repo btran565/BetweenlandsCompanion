@@ -1,4 +1,4 @@
-class weapon():
+class Weapon:
     def __init__(self, id, name, image, description, attack, defence, requiredAttributes):
         self.id = id
         self.name = name
