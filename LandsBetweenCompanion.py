@@ -42,7 +42,7 @@ def getEquipment():     ##needs error checking for right/left ints
             itemDict = getAPI(itemCate)
             if itemCate == 'weapon':
                 print("Please select a weapon category:")
-                print("(Daggers\nStraight Swords\nGreatswords\nColossal Swords\nThrusting Swords\nHeavy Thrusting Swords\nCurved Swords\nCurved Greatswords\nKatanas\nTwinblades\nAxes\nGreataxes\nHammers\nFlails\nGreat Hammers\nColossal Weapons\nSpears\nGreat Spears\nHalberds\nReapers\nWhips\nFists\nClaws\nLight Bows\nBows\nGreatbows\nCrossbows\nBallistae\nGlintstone STaffs\nSacred Seals\nTorches)")
+                print("Daggers, Straight Swords, Greatswords, Colossal Swords\nThrusting Swords, Heavy Thrusting Swords, Curved Swords, Curved Greatswords\nKatanas, Twinblades, Axes, Greataxes\nHammers, Flails, Great Hammers, Colossal Weapons\nSpears, Great Spears, Halberds, Reapers\nWhips, Fists, Claws, Light Bows\nBows, Greatbows, Crossbows, Ballistae\nGlintstone STaffs, Sacred Seals, Torches")
                 algorithms.getCategoryList(itemDict, input().lower())
             if itemCate == 'shield':
                 print("Please select a shield category(small, medium, great)")
