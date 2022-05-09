@@ -23,7 +23,6 @@ def getAttributes():
     attDict[attList[7]] = input()
     print("Enter your character's arcane:")
     attDict[attList[8]] = input()
-
     return attDict
 
 def getEquipment():
@@ -35,6 +34,7 @@ def getEquipment():
     print("Enter the number of weapons equipped in the left hand: ")
     left = input()
 
+    ##code for equipping weapons in each hand
 
     return
 
@@ -49,11 +49,10 @@ def main():
     #todo: input type error checking
     #user inputs character stats
     while True:
-        attDict = getAttributes()
+        attDict = getAttributes()           #creates dict of attributes
         print("Player's attributes:\n")
         for k, v in attDict.items():
             print(k.capitalize()+': '+v)
-
 
         print("\nIs this correct? (yes/no)")
         answer = input()
