@@ -7,24 +7,10 @@ import algorithms
 def getAttributes():
     attList = ['level', 'vigor', 'mind', 'endurance', 'strength', 'dexterity', 'intelligence', 'faith', 'arcane']
     attDict = dict(zip(attList, [None] * len(attList)))
-    print("Welcome to the Lands Between Companion! Enter your Elden Ring character's level:")
-    attDict[attList[0]] = input()
-    print("Enter your character's vigor:")
-    attDict[attList[1]] = input()
-    print("Enter your character's mind:")
-    attDict[attList[2]] = input()
-    print("Enter your character's endurance:")
-    attDict[attList[3]] = input()
-    print("Enter your character's strength:")
-    attDict[attList[4]] = input()
-    print("Enter your character's dexterity:")
-    attDict[attList[5]] = input()
-    print("Enter your character's intelligence:")
-    attDict[attList[6]] = input()
-    print("Enter your character's faith:")
-    attDict[attList[7]] = input()
-    print("Enter your character's arcane:")
-    attDict[attList[8]] = input()
+    print("Welcome to the Lands Between Companion!\n")
+    for i in range(len(attList)):
+        print("Enter your character's " + attList[i] + ":")
+        attDict[attList[i]] = input()
     return attDict
 
 def getEquipment():     ##needs error checking for right/left ints
