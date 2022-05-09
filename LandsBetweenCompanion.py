@@ -28,7 +28,7 @@ def getAttributes():
 
 def getAPI(category):       ##need to add error checking for 'category'
     json_data = {}
-    for i in range(4):
+    for i in range(4):      #reads multiple pages of API to fill local json library
         response = requests.get("https://eldenring.fanapis.com/api/" + category + "s" + "?limit=100&page=" + "0")
         json_data.update(json.loads(response.text))
     items = makeDict(json_data, category)
@@ -51,7 +51,7 @@ def getEquipment():
     return
 
 
-def makeDict(data, category):  # add new argument to change items in dictionary?
+def makeDict(data, category):  # add more conditionals to make dicts of other categories
     dict = {}
     if (category == "weapon") or (category == "shield") :
         for i in range(len(data['data'])):
