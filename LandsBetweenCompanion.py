@@ -26,10 +26,9 @@ def getAttributes():
 
     return inputs
 def getEquipment():
-    #api for all equipment?????
     response = requests.get("https://eldenring.fanapis.com/api/weapons?limit=400")
     json_data = json.loads(response.text)
-    print(makeDict(json_data))
+    makeDict(json_data)
     return
 def makeDict(data):
     dict = {}
