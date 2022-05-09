@@ -1,4 +1,4 @@
-class Weapon:
+class Weapon:       #used for both Weapons and Shields
     def __init__(self, id, name, image, description, category, weight, attack, defence, requiredAttributes, scalesWith):
         self.id = id
         self.name = name

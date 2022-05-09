@@ -1,6 +1,7 @@
 import requests
 import json
 import item
+import algorithms
 
 
 def getAttributes():
@@ -26,7 +27,7 @@ def getAttributes():
     attDict[attList[8]] = input()
     return attDict
 
-def getAPI(category):       ##need to add error checking for 'category'
+def getAPI(category):    #returns dict of specified category in API   ##need to add error checking for 'category'
     json_data = {}
     for i in range(4):      #reads multiple pages of API to fill local json library
         response = requests.get("https://eldenring.fanapis.com/api/" + category + "s" + "?limit=100&page=" + "0")
@@ -36,22 +37,31 @@ def getAPI(category):       ##need to add error checking for 'category'
 
 def getEquipment():     ##needs error checking for right/left ints
     print("Enter the number of items equipped in the right hand: ")
-    right = int(input())
+    rightNum = int(input())
     print("Enter the number of items equipped in the left hand: ")
-    left = int(input())
+    leftNum = int(input())
 
     rightHand = []
-    if right > 0:
-        for i in range(right):
+    if rightNum > 0:
+        for i in range(rightNum):
             print("Right hand equipment #" + str(i+1) + ":")
             print("Is this equipped item a Weapon or Shield?\n")
-            getAPI(input().lower())
+            itemCate = input().lower()
+            itemDict = getAPI(itemCate)
+            if itemCate == 'weapon':
+                print("Please select a weapon category:")
+                print("(Daggers\nStraight Swords\nGreatswords\nColossal Swords\nThrusting Swords\nHeavy Thrusting Swords\nCurved Swords\nCurved Greatswords\nKatanas\nTwinblades\nAxes\nGreataxes\nHammers\nFlails\nGreat Hammers\nColossal Weapons\nSpears\nGreat Spears\nHalberds\nReapers\nWhips\nFists\nClaws\nLight Bows\nBows\nGreatbows\nCrossbows\nBallistae\nGlintstone STaffs\nSacred Seals\nTorches)")
+                algorithms.getCategoryList(itemDict, input().lower())
+            if itemCate == 'shield':
+                print("Please select a shield category(small, medium, great)")
+                algorithms.getCategoryList(itemDict, input().lower())
+
     ##code for equipping weapons in each hand
 
     return
 
 
-def makeDict(data, category):  # add more conditionals to make dicts of other categories
+def makeDict(data, category):  #takes json data and category and makes dict ## add more conditionals to make dicts of other categories
     dict = {}
     if (category == "weapon"):
         for i in range(len(data['data'])):
@@ -61,7 +71,7 @@ def makeDict(data, category):  # add more conditionals to make dicts of other ca
             dict[data['data'][i]['name']] = weapon
     if (category == "shield"):
         for i in range(len(data['data'])):
-            shield = item.Shield(data['data'][i]['id'], data['data'][i]['name'], data['data'][i]['image'],
+            shield = item.Weapon(data['data'][i]['id'], data['data'][i]['name'], data['data'][i]['image'],
                                  data['data'][i]['description'], data['data'][i]['category'], data['data'][i]['weight'], data['data'][i]['attack'], data['data'][i]['defence'], data['data'][i]['requiredAttributes'],
                                  data['data'][i]['scalesWith'])
             dict[data['data'][i]['name']] = shield
