@@ -23,3 +23,14 @@ print(hashindex(sample))
 # Level 3: Actual list for weapons, will consider list vs. tree argument
 # Personal Note: the PEP8 reminders in the compiler are very annoying, will look into removing them
 
+# 1:55 pm - 5.10.2022: Intentions for class structure,
+# May require user input for determining section required, then subsequent hashing for each individual weapon
+# Might need to make changes to incorporate the differences in weapon viability
+# Best storage practices might be to organize by capability/ power level as opposed to spelling
+# hash function will need adjustment
+
+
+
+
+
+
