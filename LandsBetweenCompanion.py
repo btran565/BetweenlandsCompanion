@@ -20,7 +20,7 @@ def get_equipment():  # needs error checking for right/left ints
     print("Enter the number of items equipped in the left hand: ")
     left_num = int(input())
 
-    rightHand = []
+    both_hands = []
     if right_num > 0:
         for i in range(right_num):
             print("Right hand equipment #" + str(i + 1) + ":")
@@ -35,10 +35,10 @@ def get_equipment():  # needs error checking for right/left ints
                     "Flails, Great Hammers, Colossal Weapons,\nSpears, Great Spears, Halberds, Reapers,\nWhips, "
                     "Fists, Claws, Light Bows,\nBows, Greatbows, Crossbows, Ballistae,\nGlintstone Staffs, "
                     "Sacred Seals, Torches")
-                algorithms.getCategoryList(item_dict, input().lower())
+                algorithms.get_category_list(item_dict, input().lower())
             if item_cate == 'shield':
                 print("Please select the shield's category:(small, medium, great)")
-                algorithms.getCategoryList(item_dict, input().lower())
+                algorithms.get_category_list(item_dict, input().lower())
 
     ##code for equipping weapons in each hand
 
@@ -58,7 +58,7 @@ def make_dict(data, category):
     # takes json data and category and makes dict
     # add more conditionals to make dicts of other categories
     new_dict = {}
-    if (category == "weapon"):
+    if category == "weapon":
         for i in range(len(data['data'])):
             weapon = item.Weapon(data['data'][i]['id'], data['data'][i]['name'], data['data'][i]['image'],
                                  data['data'][i]['description'], data['data'][i]['category'], data['data'][i]['weight'],
@@ -66,7 +66,7 @@ def make_dict(data, category):
                                  data['data'][i]['requiredAttributes'],
                                  data['data'][i]['scalesWith'])
             new_dict[data['data'][i]['name']] = weapon
-    if (category == "shield"):
+    if category == "shield":
         for i in range(len(data['data'])):
             shield = item.Weapon(data['data'][i]['id'], data['data'][i]['name'], data['data'][i]['image'],
                                  data['data'][i]['description'], data['data'][i]['category'], data['data'][i]['weight'],

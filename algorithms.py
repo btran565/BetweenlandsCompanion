@@ -1,3 +1,3 @@
-def getCategoryList(dict, category):
-    print("you have entered getCategoryList")
+def get_category_list(item_dict, category):
+
     return
