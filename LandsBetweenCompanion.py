@@ -39,7 +39,7 @@ def get_equipment():  # needs error checking for right/left ints
     if right_num > 0:
         for i in range(right_num):
             print("Right hand equipment #" + str(i + 1) + ":")
-            print("Is this equipped item a Weapon or Shield?\n")    # need to add error checking
+            print("Is this equipped item a Weapon or Shield?\n")  # need to add error checking
             item_cate = input().lower()
             item_dict = get_api(item_cate)
             if item_cate == 'weapon':
