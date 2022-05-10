@@ -6,11 +6,26 @@ import algorithms
 
 def get_attributes():
     att_list = ['level', 'vigor', 'mind', 'endurance', 'strength', 'dexterity', 'intelligence', 'faith', 'arcane']
-    att_dict = dict(zip(att_list, [None] * len(att_list)))  # creates dict with attributes as keys and None's as values
+    att_dict = dict(zip(att_list, [None] * len(att_list)))  # creates dict with attribute keys and None values
     print("Welcome to the Lands Between Companion!\n")
     for i in range(len(att_list)):
-        print("Enter your character's " + att_list[i] + ":")
-        att_dict[att_list[i]] = input()
+        while True:
+            att_dict[att_list[i]] = input("Enter your character's " + att_list[i] + ": ")
+            try:
+                user_input = int(att_dict[att_list[i]])
+                if att_list[i] == 'level':
+                    if user_input <= 0 or user_input > 713:
+                        print('ERROR: Level must be between 0-713.')
+                        continue
+                    else:
+                        break
+            except ValueError:
+                print('ERROR: Valid number required.')
+                continue
+            if 0 <= user_input <= 99:
+                break
+            else:
+                print('ERROR: Attribute must be between 0-100.')
     return att_dict
 
 
