@@ -27,6 +27,10 @@ def make_dict(data, category):
 def filter_category(item_dict, category):
     new_dict = dict()
     for (key, value) in item_dict.items():
-        if value.Weapon.category == category:
+        if value.category == category:
             new_dict[key] = value
     return new_dict
+
+def print_dict(dict):
+    for i in range(len(dict)):
+        # print(dict[])

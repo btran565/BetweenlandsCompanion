@@ -37,13 +37,14 @@ def get_equipment():  # needs error checking for right/left ints
 
     both_hands = []
     if right_num > 0:
+        right_hand = []
         for i in range(right_num):
             print("Right hand equipment #" + str(i + 1) + ":")
-            print("Is this equipped item a Weapon or Shield?\n")  # need to add error checking
+            print("Is this equipped item a Weapon or Shield?")  # need to add error checking
             item_cate = input().lower()
             item_dict = get_api(item_cate)
             if item_cate == 'weapon':
-                print("Please select the weapon's category:")
+                print("Please select the weapon's category:\n")
                 print(
                     "Daggers, Straight Swords, Greatswords, Colossal Swords,\nThrusting Swords, Heavy Thrusting "
                     "Swords, Curved Swords, Curved Greatswords,\nKatanas, Twinblades, Axes, Greataxes,\nHammers, "
@@ -51,6 +52,7 @@ def get_equipment():  # needs error checking for right/left ints
                     "Fists, Claws, Light Bows,\nBows, Greatbows, Crossbows, Ballistae,\nGlintstone Staffs, "
                     "Sacred Seals, Torches")
                 algorithms.filter_category(item_dict, input().lower())
+                # right_hand[i] =
             if item_cate == 'shield':
                 print("Please select the shield's category:(small, medium, great)")
                 algorithms.filter_category(item_dict, input().lower())
