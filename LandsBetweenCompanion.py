@@ -5,29 +5,29 @@ import algorithms
 
 
 def get_attributes():
-    attList = ['level', 'vigor', 'mind', 'endurance', 'strength', 'dexterity', 'intelligence', 'faith', 'arcane']
-    attDict = dict(zip(attList, [None] * len(attList)))  # creates dict with attributes as keys and None's as values
+    att_list = ['level', 'vigor', 'mind', 'endurance', 'strength', 'dexterity', 'intelligence', 'faith', 'arcane']
+    att_dict = dict(zip(att_list, [None] * len(att_list)))  # creates dict with attributes as keys and None's as values
     print("Welcome to the Lands Between Companion!\n")
-    for i in range(len(attList)):
-        print("Enter your character's " + attList[i] + ":")
-        attDict[attList[i]] = input()
-    return attDict
+    for i in range(len(att_list)):
+        print("Enter your character's " + att_list[i] + ":")
+        att_dict[att_list[i]] = input()
+    return att_dict
 
 
 def get_equipment():  # needs error checking for right/left ints
     print("Enter the number of items equipped in the right hand: ")
-    rightNum = int(input())
+    right_num = int(input())
     print("Enter the number of items equipped in the left hand: ")
-    leftNum = int(input())
+    left_num = int(input())
 
     rightHand = []
-    if rightNum > 0:
-        for i in range(rightNum):
+    if right_num > 0:
+        for i in range(right_num):
             print("Right hand equipment #" + str(i + 1) + ":")
             print("Is this equipped item a Weapon or Shield?\n")
-            itemCate = input().lower()
-            itemDict = get_api(itemCate)
-            if itemCate == 'weapon':
+            item_cate = input().lower()
+            item_dict = get_api(item_cate)
+            if item_cate == 'weapon':
                 print("Please select the weapon's category:")
                 print(
                     "Daggers, Straight Swords, Greatswords, Colossal Swords,\nThrusting Swords, Heavy Thrusting "
@@ -35,10 +35,10 @@ def get_equipment():  # needs error checking for right/left ints
                     "Flails, Great Hammers, Colossal Weapons,\nSpears, Great Spears, Halberds, Reapers,\nWhips, "
                     "Fists, Claws, Light Bows,\nBows, Greatbows, Crossbows, Ballistae,\nGlintstone Staffs, "
                     "Sacred Seals, Torches")
-                algorithms.getCategoryList(itemDict, input().lower())
-            if itemCate == 'shield':
+                algorithms.getCategoryList(item_dict, input().lower())
+            if item_cate == 'shield':
                 print("Please select the shield's category:(small, medium, great)")
-                algorithms.getCategoryList(itemDict, input().lower())
+                algorithms.getCategoryList(item_dict, input().lower())
 
     ##code for equipping weapons in each hand
 
@@ -57,7 +57,7 @@ def get_api(category):  # returns dict of specified category in API   ##need to 
 def make_dict(data, category):
     # takes json data and category and makes dict
     # add more conditionals to make dicts of other categories
-    dict = {}
+    new_dict = {}
     if (category == "weapon"):
         for i in range(len(data['data'])):
             weapon = item.Weapon(data['data'][i]['id'], data['data'][i]['name'], data['data'][i]['image'],
@@ -65,7 +65,7 @@ def make_dict(data, category):
                                  data['data'][i]['attack'], data['data'][i]['defence'],
                                  data['data'][i]['requiredAttributes'],
                                  data['data'][i]['scalesWith'])
-            dict[data['data'][i]['name']] = weapon
+            new_dict[data['data'][i]['name']] = weapon
     if (category == "shield"):
         for i in range(len(data['data'])):
             shield = item.Weapon(data['data'][i]['id'], data['data'][i]['name'], data['data'][i]['image'],
@@ -73,8 +73,8 @@ def make_dict(data, category):
                                  data['data'][i]['attack'], data['data'][i]['defence'],
                                  data['data'][i]['requiredAttributes'],
                                  data['data'][i]['scalesWith'])
-            dict[data['data'][i]['name']] = shield
-    return dict  # returns dictionary of item names and item objects
+            new_dict[data['data'][i]['name']] = shield
+    return new_dict  # returns dictionary of item names and item objects
 
 
 def main():
