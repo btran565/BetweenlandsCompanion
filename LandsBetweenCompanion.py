@@ -30,7 +30,11 @@ def get_equipment():  # needs error checking for right/left ints
             if itemCate == 'weapon':
                 print("Please select the weapon's category:")
                 print(
-                    "Daggers, Straight Swords, Greatswords, Colossal Swords,\nThrusting Swords, Heavy Thrusting Swords, Curved Swords, Curved Greatswords,\nKatanas, Twinblades, Axes, Greataxes,\nHammers, Flails, Great Hammers, Colossal Weapons,\nSpears, Great Spears, Halberds, Reapers,\nWhips, Fists, Claws, Light Bows,\nBows, Greatbows, Crossbows, Ballistae,\nGlintstone Staffs, Sacred Seals, Torches")
+                    "Daggers, Straight Swords, Greatswords, Colossal Swords,\nThrusting Swords, Heavy Thrusting "
+                    "Swords, Curved Swords, Curved Greatswords,\nKatanas, Twinblades, Axes, Greataxes,\nHammers, "
+                    "Flails, Great Hammers, Colossal Weapons,\nSpears, Great Spears, Halberds, Reapers,\nWhips, "
+                    "Fists, Claws, Light Bows,\nBows, Greatbows, Crossbows, Ballistae,\nGlintstone Staffs, "
+                    "Sacred Seals, Torches")
                 algorithms.getCategoryList(itemDict, input().lower())
             if itemCate == 'shield':
                 print("Please select the shield's category:(small, medium, great)")
@@ -50,8 +54,9 @@ def get_api(category):  # returns dict of specified category in API   ##need to 
     return items
 
 
-def make_dict(data,
-              category):  # takes json data and category and makes dict ## add more conditionals to make dicts of other categories
+def make_dict(data, category):
+    # takes json data and category and makes dict
+    # add more conditionals to make dicts of other categories
     dict = {}
     if (category == "weapon"):
         for i in range(len(data['data'])):
@@ -76,16 +81,16 @@ def main():
     # user inputs character stats
     # add input type checking later
     while True:
-        attDict = get_attributes()  # creates dict of attributes
+        att_dict = get_attributes()  # creates dict of attributes
         print("Player's attributes:\n")
-        for k, v in attDict.items():
+        for k, v in att_dict.items():
             print(k.capitalize() + ': ' + v)
 
         print("\nIs this correct? (yes/no)")
         answer = input()
         if answer.lower() == "yes":
             break
-    equipList = get_equipment()
+    equip_list = get_equipment()
 
 
 main()
