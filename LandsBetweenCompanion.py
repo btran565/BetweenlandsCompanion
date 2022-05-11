@@ -37,23 +37,29 @@ def get_equipment():  # needs error checking for right/left ints
 
     both_hands = []
     if right_num > 0:
-        right_hand = []
+        right_hand = [right_num]
         for i in range(right_num):
             print("Right hand equipment #" + str(i + 1) + ":")
             print("Is this equipped item a Weapon or Shield?")  # need to add error checking
             item_cate = input().lower()
             item_dict = get_api(item_cate)
             if item_cate == 'weapon':
-                print("Please select the weapon's category:\n")
+                print("Please select the equipped weapon's category:\n")
                 print(
-                    "Daggers, Straight Swords, Greatswords, Colossal Swords,\nThrusting Swords, Heavy Thrusting "
-                    "Swords, Curved Swords, Curved Greatswords,\nKatanas, Twinblades, Axes, Greataxes,\nHammers, "
-                    "Flails, Great Hammers, Colossal Weapons,\nSpears, Great Spears, Halberds, Reapers,\nWhips, "
-                    "Fists, Claws, Light Bows,\nBows, Greatbows, Crossbows, Ballistae,\nGlintstone Staffs, "
-                    "Sacred Seals, Torches")
-                weapons = algorithms.filter_category(item_dict, input().lower())
-
-                # right_hand[i] =
+                    "Dagger, Straight Sword, Greatsword, Colossal Sword,\nThrusting Sword, Heavy Thrusting "
+                    "Sword, Curved Sword, Curved Greatsword,\nKatana, Twinblade, Axe, Greataxe,\nHammer, "
+                    "Flail, Great Hammer, Colossal Weapon,\nSpear, Great Spear, Halberd, Reaper,\nWhip, "
+                    "Fist, Claw, Light Bow,\nBow, Greatbow, Crossbow, Ballista,\nGlintstone Staff, "
+                    "Sacred Seal, Torch")
+                item_cate = input()
+                item_dict = algorithms.filter_category(item_dict, item_cate.lower())
+                print("Choose which weapon you have equipped from the list of " + item_cate + ":\n")
+                algorithms.print_dict(item_dict)
+                choice = input()
+                for key, value in item_dict.items():
+                    if key.lower() == choice:
+                        right_hand[i] = input()
+                        print(str(right_hand[i]) + " equipped to right hand!\n")
             if item_cate == 'shield':
                 print("Please select the shield's category:(small, medium, great)")
                 algorithms.filter_category(item_dict, input().lower())
