@@ -42,7 +42,7 @@ def get_equipment():  # needs error checking for right/left ints
             print("Right hand equipment #" + str(i + 1) + ":")
             print("Is this equipped item a Weapon or Shield?")  # need to add error checking
             item_cate = input().lower()
-            item_dict = get_api(item_cate)
+            item_dict = get_api(item_cate)      # bug: item dict is only taking 100 weapons
             if item_cate == 'weapon':
                 print("Please select the equipped weapon's category:\n")
                 print(
@@ -54,11 +54,12 @@ def get_equipment():  # needs error checking for right/left ints
                 item_cate = input()
                 item_dict = algorithms.filter_category(item_dict, item_cate.lower())
                 print("Choose which weapon you have equipped from the list of " + item_cate + ":\n")
-                algorithms.print_dict(item_dict)
+                algorithms.print_dict(item_dict)        # sometimes doesnt print a list of items
                 choice = input()
-                for key, value in item_dict.items():    # BROKEN. program hung up on something
+                item_list = item_dict.items()
+                for key, value in item_list:    # BROKEN. program hung up on something
                     if key.lower() == choice:
-                        right_hand[i] = input()
+                        right_hand[i] = item_list[key]
                         print(str(right_hand[i]) + " equipped to right hand!\n")
             if item_cate == 'shield':
                 print("Please select the shield's category:(small, medium, great)")
@@ -71,9 +72,12 @@ def get_equipment():  # needs error checking for right/left ints
 
 def get_api(category):  # returns dict of specified category in API   ##need to add error checking for 'category'
     json_data = {}
+    temp = {}
     for i in range(4):  # reads multiple pages of API to fill local json library
-        response = requests.get("https://eldenring.fanapis.com/api/" + category + "s" + "?limit=100&page=" + "0")
-        json_data.update(json.loads(response.text))
+        response = requests.get("https://eldenring.fanapis.com/api/" + category + "s" + "?limit=100&page=" + str(i))
+        # json_data.update(json.loads(response.text))     # incorrect. needs to append the additional ~209 weapons
+        temp = json.loads(response.text)
+        json_data = {**json_data, **temp}
     items = algorithms.make_dict(json_data, category)
     return items
 
