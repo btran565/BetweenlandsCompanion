@@ -31,7 +31,7 @@ def filter_category(item_dict, category):
             new_dict[key] = value
     return new_dict
 
-def dict_to_list(dict):
+def print_dict(dict):
     new_list = []
     for i in range(len(dict)):
         # print(dict[])
