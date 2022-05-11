@@ -56,7 +56,7 @@ def get_equipment():  # needs error checking for right/left ints
                 print("Choose which weapon you have equipped from the list of " + item_cate + ":\n")
                 algorithms.print_dict(item_dict)
                 choice = input()
-                for key, value in item_dict.items():
+                for key, value in item_dict.items():    # BROKEN. program hung up on something
                     if key.lower() == choice:
                         right_hand[i] = input()
                         print(str(right_hand[i]) + " equipped to right hand!\n")
