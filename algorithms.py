@@ -27,11 +27,12 @@ def make_dict(data, category):
 def filter_category(item_dict, category):
     new_dict = dict()
     for (key, value) in item_dict.items():
-        if value.category == category:
+        if value.category.lower() == category:
             new_dict[key] = value
     return new_dict
 
 def print_dict(dict):
     new_list = []
-    for i in range(len(dict)):
-        # print(dict[])
+    for key, value in range(len(dict.items())):
+        print(key)
+    return

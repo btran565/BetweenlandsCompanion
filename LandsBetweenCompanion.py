@@ -52,6 +52,7 @@ def get_equipment():  # needs error checking for right/left ints
                     "Fists, Claws, Light Bows,\nBows, Greatbows, Crossbows, Ballistae,\nGlintstone Staffs, "
                     "Sacred Seals, Torches")
                 weapons = algorithms.filter_category(item_dict, input().lower())
+
                 # right_hand[i] =
             if item_cate == 'shield':
                 print("Please select the shield's category:(small, medium, great)")
