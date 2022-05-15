@@ -29,6 +29,8 @@ print(hashindex(sample))
 # Best storage practices might be to organize by capability/ power level as opposed to spelling
 # hash function will need adjustment
 
+# 8:36 pm - 5.14.2022: Wow I get lazy when I have time off
+# Forming the bare-bones of a Weapons txt file to start out the hashing function that'll work better
 
 
 
