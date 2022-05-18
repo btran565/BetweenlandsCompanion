@@ -1,0 +1,30 @@
+*Greatsword
+*Twinblades
+*Light Bow
+*Colossal Weapon
+*Crossbow
+*Colossal Sword
+*Great Bow
+*Katana
+*Great Spear
+*Curved Greatsword
+*Hammer
+*Straight Sword
+*Reaper
+*Glintstone Staff
+*Sacred Seal
+*Flail
+*Warhammer
+*Dagger
+*Spear
+*Heavy Thrusting Sword
+*Curved Sword
+*Great Axe
+*Whip
+*Halberd
+*Fist
+*Axe
+*Torch
+*Thrusting Sword
+*Claw
+*Ballista
