@@ -32,7 +32,7 @@ print(hashindex(sample))
 # 8:36 pm - 5.14.2022: Wow I get lazy when I have time off
 # Forming the bare-bones of a Weapons txt file to start out the hashing function that'll work better
 
-
+# Bladiusbefiwbfiowe
 
 
 
