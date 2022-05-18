@@ -1,4 +1,4 @@
-*Helm
-*Chest
-*Gauntlet
-*Leg
+Helm
+Chest
+Gauntlet
+Leg
