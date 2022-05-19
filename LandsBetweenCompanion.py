@@ -36,37 +36,19 @@ def get_equipment():  # needs error checking for right/left ints
     left_num = int(input())
 
     both_hands = []
-    if right_num > 0:
-        for i in range(right_num):
-            print("Right hand equipment #" + str(i + 1) + ":")
-            print("Is this equipped item a Weapon or Shield?\n")  # need to add error checking
-            item_cate = input().lower()
-            item_dict = get_api(item_cate)
-            if item_cate == 'weapon':
-                print("Please select the weapon's category:")
-                print(
-                    "Daggers, Straight Swords, Greatswords, Colossal Swords,\nThrusting Swords, Heavy Thrusting "
-                    "Swords, Curved Swords, Curved Greatswords,\nKatanas, Twinblades, Axes, Greataxes,\nHammers, "
-                    "Flails, Great Hammers, Colossal Weapons,\nSpears, Great Spears, Halberds, Reapers,\nWhips, "
-                    "Fists, Claws, Light Bows,\nBows, Greatbows, Crossbows, Ballistae,\nGlintstone Staffs, "
-                    "Sacred Seals, Torches")
-                algorithms.filter_category(item_dict, input().lower())
-            if item_cate == 'shield':
-                print("Please select the shield's category:(small, medium, great)")
-                algorithms.filter_category(item_dict, input().lower())
-
-    # code for equipping weapons in each hand
-
+    get_api('weapons')
     return
 
 
 def get_api(category):  # returns dict of specified category in API   ##need to add error checking for 'category'
-    json_data = {}
+    # json_data = {}
     for i in range(4):  # reads multiple pages of API to fill local json library
-        response = requests.get("https://eldenring.fanapis.com/api/" + category + "s" + "?limit=100&page=" + "0")
-        json_data.update(json.loads(response.text))
-    json_file = algorithms.make_json(json_data, category)   # changed to make_json
-    return json_file
+        json_data = requests.get("https://eldenring.fanapis.com/api/" + str(category) + "?limit=100&page=" + "0").json()
+        print(json_data)
+        # json_data.update(json.loads(response))
+        with open('test.json', 'w') as json_file:
+            json.dump(json_data, json_file)
+
 
 
 
