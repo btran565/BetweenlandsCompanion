@@ -65,8 +65,8 @@ def get_api(category):  # returns dict of specified category in API   ##need to 
     for i in range(4):  # reads multiple pages of API to fill local json library
         response = requests.get("https://eldenring.fanapis.com/api/" + category + "s" + "?limit=100&page=" + "0")
         json_data.update(json.loads(response.text))
-    items = algorithms.make_dict(json_data, category)
-    return items
+    json_file = algorithms.make_json(json_data, category)   # changed to make_json
+    return json_file
 
 
 
