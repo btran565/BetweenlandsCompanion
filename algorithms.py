@@ -1,6 +1,9 @@
 import json
 import item
 
+def make_json(data, category):  # use category to name json file
+    with open(str(category) + '.json', 'w') as json_file:
+        json.dump(data, json_file)
 
 def make_dict(data, category):
     # takes json data and category and makes dict

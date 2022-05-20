@@ -37,30 +37,20 @@ def get_equipment():  # needs error checking for right/left ints
 
     both_hands = []
     if right_num > 0:
-        right_hand = [right_num]
         for i in range(right_num):
             print("Right hand equipment #" + str(i + 1) + ":")
-            print("Is this equipped item a Weapon or Shield?")  # need to add error checking
+            print("Is this equipped item a Weapon or Shield?\n")  # need to add error checking
             item_cate = input().lower()
-            item_dict = get_api(item_cate)      # bug: item dict is only taking 100 weapons
+            item_dict = get_api(item_cate)
             if item_cate == 'weapon':
-                print("Please select the equipped weapon's category:\n")
+                print("Please select the weapon's category:")
                 print(
-                    "Dagger, Straight Sword, Greatsword, Colossal Sword,\nThrusting Sword, Heavy Thrusting "
-                    "Sword, Curved Sword, Curved Greatsword,\nKatana, Twinblade, Axe, Greataxe,\nHammer, "
-                    "Flail, Great Hammer, Colossal Weapon,\nSpear, Great Spear, Halberd, Reaper,\nWhip, "
-                    "Fist, Claw, Light Bow,\nBow, Greatbow, Crossbow, Ballista,\nGlintstone Staff, "
-                    "Sacred Seal, Torch")
-                item_cate = input()
-                item_dict = algorithms.filter_category(item_dict, item_cate.lower())
-                print("Choose which weapon you have equipped from the list of " + item_cate + ":\n")
-                algorithms.print_dict(item_dict)        # sometimes doesnt print a list of items
-                choice = input()
-                item_list = item_dict.items()
-                for key, value in item_list:    # BROKEN. program hung up on something
-                    if key.lower() == choice:
-                        right_hand[i] = item_list[key]
-                        print(str(right_hand[i]) + " equipped to right hand!\n")
+                    "Daggers, Straight Swords, Greatswords, Colossal Swords,\nThrusting Swords, Heavy Thrusting "
+                    "Swords, Curved Swords, Curved Greatswords,\nKatanas, Twinblades, Axes, Greataxes,\nHammers, "
+                    "Flails, Great Hammers, Colossal Weapons,\nSpears, Great Spears, Halberds, Reapers,\nWhips, "
+                    "Fists, Claws, Light Bows,\nBows, Greatbows, Crossbows, Ballistae,\nGlintstone Staffs, "
+                    "Sacred Seals, Torches")
+                algorithms.filter_category(item_dict, input().lower())
             if item_cate == 'shield':
                 print("Please select the shield's category:(small, medium, great)")
                 algorithms.filter_category(item_dict, input().lower())
@@ -72,12 +62,9 @@ def get_equipment():  # needs error checking for right/left ints
 
 def get_api(category):  # returns dict of specified category in API   ##need to add error checking for 'category'
     json_data = {}
-    temp = {}
     for i in range(4):  # reads multiple pages of API to fill local json library
-        response = requests.get("https://eldenring.fanapis.com/api/" + category + "s" + "?limit=100&page=" + str(i))
-        # json_data.update(json.loads(response.text))     # incorrect. needs to append the additional ~209 weapons
-        temp = json.loads(response.text)
-        json_data = {**json_data, **temp}
+        response = requests.get("https://eldenring.fanapis.com/api/" + category + "s" + "?limit=100&page=" + "0")
+        json_data.update(json.loads(response.text))
     items = algorithms.make_dict(json_data, category)
     return items
 
