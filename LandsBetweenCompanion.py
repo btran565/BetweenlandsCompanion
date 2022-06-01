@@ -50,10 +50,6 @@ def get_api(category):  # returns dict of specified category in API   ##need to 
             json.dump(json_data, json_file)
 
 
-
-
-
-
 def main():
     # user inputs character stats
     # add input type checking later
@@ -70,4 +66,5 @@ def main():
     equip_list = get_equipment()
 
 
-main()
+if __name__ == "__main__":
+    main()
